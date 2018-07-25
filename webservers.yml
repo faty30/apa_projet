@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  sudo: yes
+  vars:
+    http_port: 80
+    domain: test.com
+  tasks:
+    - name: install httpd
+      yum: name=httpd update_cache=yes state=latest 
+    - name: start apache
+      service:
+       name: httpd
+       state: restarted
+    
+    - name: create virtual host file
+      template: src=virtualhost.conf dest=/etc/httpd/sites-available/{{ domain }}.conf
+
+                    
