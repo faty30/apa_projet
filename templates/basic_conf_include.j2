@@ -1,0 +1,14 @@
+ServerName {{ vhost_domain }}
+
+    DocumentRoot {{ vhost_directory }}/htdocs
+    <Directory {{ vhost_directory }}/htdocs>
+        Require all granted
+        Option -Indexes
+        AllowOverride all  
+    </Directory>
+
+    LogLevel warm
+    Errorlog {{ vhost_directory }}/logs/error.log
+    CustomLog {{ vhost_directory }}/logs/access.log combined
+    
+    IncludeOptional /etc/httpd/sites-include/{{ vhost_domain }}*.conf

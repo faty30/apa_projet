@@ -1,0 +1,15 @@
+- name: httpd
+  hosts: httpd
+  remote_user: root
+
+  roles:
+    - httpd-vhost
+
+  vars:
+    - use_perl: true
+    - vhost_domain: ivoiro.com
+    - vhost_user: ivoiro
+   
+    - use_perl: true
+    - vhost_domain: example.com
+    - vhost_user: example   
